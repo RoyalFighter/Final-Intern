@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://authz-app.vercel.app', 'http://192.168.18.10:3000'],
+    origin: ['http://localhost:5173', 'https://authz-app.vercel.app', 'http://192.168.18.10:3000'],
     credentials: true,
   })
 );

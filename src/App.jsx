@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link, NavLink } from "react-rou
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ForexApp from "./components/ForexApp";
+import CurdDemo from "./components/CurdDemo";
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
                 ForexApp
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/curd" className="text-lg font-bold" activeClassName="text-white">
+                CurdDemo
+              </NavLink>
+            </li>
           </ul>
           </div>
         </nav>
@@ -39,6 +45,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/forex" element={<ForexApp />} />
+            <Route path="/curd" element={<CurdDemo />} />
           </Routes>
         </div>
       </div>
