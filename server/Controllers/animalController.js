@@ -56,7 +56,7 @@ const animalController = {
         relatedSpecies: getRandomValue('relatedSpecies'),
       };
 
-      //adding animal to database
+      // Using Mongoose's create method to insert a new animal into the collection
       const newAnimal = await Animal.create(randomAnimal);
 
       // Sending the newly created animal as the response
@@ -67,19 +67,30 @@ const animalController = {
     }
   },
 
-
   updateAnimal: async (req, res) => {
     try {
+      // Extracting fields to update from user-provided data
+      const { name, image, features } = req.body;
+  
+      // Creating an object with the fields to update
+      const updateFields = {};
+      if (name) updateFields.name = name;
+      if (image) updateFields.image = image;
+      if (features) updateFields.features = features;
+  
+      // Using Mongoose's findOneAndUpdate method to update the specified fields
       const updatedAnimal = await Animal.findOneAndUpdate(
         { _id: req.params.id },
-        req.body,
+        updateFields,
         { new: true }
       );
+  
       res.json(updatedAnimal);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   },
+  
 
   deleteAnimal: async (req, res) => {
     try {

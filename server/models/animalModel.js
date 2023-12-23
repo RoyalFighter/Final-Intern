@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const animalSchema = new mongoose.Schema({
   name: {
     type: String,
-    // required: true,
-    unique: true,
-  },
+ },
   image: {
     type: String, // Assuming the image is stored as a URL
   },

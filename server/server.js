@@ -1,17 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const bodyParser = require("body-parser")
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: ['http://localhost:3000', 'https://authz-app.vercel.app', 'http://192.168.18.10:3000'],
@@ -35,8 +31,8 @@ db.once('open', () => {
 const animalRoutes = require('./Routes/animalRoutes');
 app.use('/api/animals', animalRoutes);
 app.get('/', (req, res) => {
-    res.send('Home Page');
-  });
+  res.send('Home Page');
+});
 
 // Start the server
 app.listen(PORT, () => {
